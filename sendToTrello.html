@@ -1,0 +1,238 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Send to Trello Bookmark Creator</title>
+
+		<!-- CSS -->
+		<style type="text/css" media="screen">
+			body {
+				background-color: #F0F0F0;
+				color: #454545;
+				font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+				font-size: 14px;
+				margin: 0;
+				min-width: 480px;
+			}
+
+			#div_content {
+				display: block;
+				margin: 0 auto 0 auto;
+				min-width: 400px;
+				max-width: 600px;
+				zoom: 1;
+				overflow: auto;
+			}
+
+			header {
+				color: #F3F3F3;
+				font-size: 24px;
+				font-weight: bold;
+				text-align: center;
+				background: #27709b;
+				background: -webkit-linear-gradient(top, #27709b 0, #24688f 100%);
+				background: linear-gradient(to bottom, #27709b 0, #24688f 100%);
+				-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+				box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
+				padding: 5px;
+				margin: 0;
+				z-index: 10;
+			}
+
+			section {
+				border-bottom-color: #DDDDDD;
+				border-bottom-style: solid;
+				border-bottom-width: 1px;
+				padding: 15px 10px 10px 10px;
+				margin: 0;
+			}
+
+			h2 {
+				color: #3A3A3A;
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 21px;
+				margin: 0;
+			}
+
+			select {
+				margin: 10px 0 0 20px;
+				font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+				background-attachment: scroll;
+				background-clip: border-box;
+				background-color: #000000;
+				background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
+				background-origin: padding-box;
+				border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
+				border-radius: 3px;
+				border-style: solid;
+				border-width: 1px;
+				color: #454545;
+				cursor: pointer;
+				display: block;
+				font-size: 16px;
+				font-weight: bold;
+				height: 25px;
+				margin: 10px 0 0 30px;
+			}
+
+			#a_bookmark {
+				background-attachment: scroll;
+				background-clip: border-box;
+				background-color: #000000;
+				background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
+				background-origin: padding-box;
+				border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
+				border-radius: 3px;
+				border-style: solid;
+				border-width: 1px;
+				cursor: pointer;
+				color: #454545;
+				display: block;
+				font-size: 16px;
+				font-weight: bold;
+				height: 20px;
+				line-height: 20px;
+				width: 130px;
+				padding: 6px 6px 6px 6px;
+				text-align: center;
+				text-decoration: none;
+				margin: 10px 0 0 30px;
+			}
+
+			#a_bookmark:hover {
+				color: #FFFFFF;
+				background-image: -webkit-linear-gradient(top, rgb(46, 133, 184) 0px, rgb(40, 115, 159) 100%);
+				cursor: pointer;
+			}
+
+			#img_loading {
+				float: right;
+				width: 35px;
+			}
+		</style>
+
+		<!-- Include jQuery and Trello API -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="https://api.trello.com/1/client.js?key=a06d07618dfbbdb4c0e94b45041c26f3"></script>
+
+		<!-- Include jQuery and Trello API -->
+		<script>
+			//For debuggging 
+			if (false) {
+				Trello.deauthorize();
+			}
+
+			//Try to authorize without user
+			function checkAuth() {
+				//Hide divs
+				$("#sec_board").hide();
+				$("#sec_list").hide();
+				$("#sec_bookmark").hide();
+
+				Trello.authorize({
+					interactive: false,
+					persist: true,
+					error: function() { auth(); },
+					success: function() { setupBoards(); }
+				});
+			};
+
+			//If automatic authorize fails then authorize with user
+			function auth() {
+				Trello.authorize({
+					type: "popup",
+					name: "Send to Trello Bookmark Creator",
+					persist: true,
+					scope: { write: true },
+					expiration: "never",
+					success: function() { setupBoards(); }
+				});
+			};
+
+			//Setup the board selection list
+			function setupBoards() {
+				Trello.get("members/me", {
+					boards: "open"
+				}, function(data) {
+					//Create the board select list and show it
+					$("#span_board").append("<select id=\"select_board\"></select>");
+					$("#select_board").append("<option value=\"--None--\">--None--</option>");
+					for (var i = 0; i < data.boards.length; i++)
+						$("#select_board").append("<option value=\"" + data.boards[i].id + "\">" + data.boards[i].name + "</option>");
+					$("#sec_board").fadeIn();
+					
+					//Setup the board onchange function to call the setup lists function if a board is selected
+					$("#select_board").change(function () {
+						$("#sec_bookmark").fadeOut();
+						$("#sec_list").fadeOut(function() { 
+							if ($("#select_board").val() != "--None--") 
+								setupLists($("#select_board").val());
+						});
+					});
+				});
+			};
+
+			//Setup the list selection list
+			function setupLists(boardId) {
+				Trello.boards.get(boardId, {
+					lists: "open"
+				}, function(data) {
+					//Create the list select list and show it
+					$("#span_list").empty();
+					$("#span_list").append("<select id=\"select_list\"></select>");
+					$("#select_list").append("<option value=\"--None--\">--None--</option>");
+					for (var i = 0; i < data.lists.length; i++)
+						$("#select_list").append("<option value=\"" + data.lists[i].id + "\">" + data.lists[i].name + "</option>");
+					$("#sec_list").fadeIn();
+
+					//Setup the list onchange function to call the setup lists function if a board is selected
+					$("#select_list").change(function () {
+						$("#sec_bookmark").fadeOut(function() { 
+							if ($("#select_list").val() != "--None--")
+								makeBookmark($("#select_list").val());
+						});
+					});
+				});
+			};
+
+			//Create the bookmark according to the list currently selected
+			function makeBookmark(listId) {
+				//Trello.token();
+				//Trello.key();
+				$("#a_bookmark").attr("href", "javascript:" + "alert(\"" + listId + "\");");
+				$("#sec_bookmark").fadeIn();
+			};
+
+			$(checkAuth);
+		</script>
+	</head>
+	<body>
+		<header>
+			<img src="http://i.imgur.com/wH8TLYA.png" style="float: left"/>
+			Send to Trello Bookmark Creator
+		</header>
+		<div id="div_content">
+			<section id="sec_board">
+				<h2>Board</h2>
+				<span id="span_board"></span>
+			</section>
+			<section id="sec_list">
+				<h2>List</h2>
+				<span id="span_list"></span>
+			</section>
+			<section id="sec_bookmark">
+				<h2>Bookmark</h2>
+				<a id="a_bookmark">Send to Trello</a>
+			</section>
+			<section>
+				<ul>
+					<li>Choose a board.</li>
+					<li>Choose a list.</li>
+					<li>Drag the button to your bookmarks bar.</li>
+					<li>Go to a webpage you'd like to add to the list.</li>
+					<li>Click the bookmark to send it to the list!</li>
+				</ul>
+			</section>
+		</div>
+	</body>
+</html>
