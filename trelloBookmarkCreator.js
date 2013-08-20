@@ -80,7 +80,8 @@ function setupLists(boardId) {
 function makeBookmark(listId) {
 	//Trello.token();
 	//Trello.key();
-	$("#a_bookmark").attr("href", "javascript:" + "alert(\"" + listId + "\");");
+	//$("#a_bookmark").attr("href", "javascript:" + "alert(\"" + listId + "\");");
+	$("#a_bookmark").attr("href", "javascript:document.body.appendChild(document.createElement(\"script\")).src=\"https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js?" + listId + "\";void(0)");
 	$("#sec_bookmark").fadeIn();
 };
 
