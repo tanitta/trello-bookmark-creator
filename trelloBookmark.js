@@ -12,6 +12,10 @@ function trelloBookmark(listId) {
 	else if (document.getElementById("cas2j_id0_j_id4_ileinner") != null)
 		pageType = "sgCase";
 
+	var sgWorkRequestRegEx = new RegExp("^https://sgcorp.my.salesforce.com/a43");
+	if (sgWorkRequestRegEx.exec(document.demoMatch.subject.value) != null) 
+		alert("REGEX MATCH");
+
 	/*
 	//If the user is not on a supported page then stop (if commented out then card name = page title and desc = page URL)
 	if (pageType == "") {

@@ -19,20 +19,25 @@
 			Trello Bookmark Creator
 		</header>
 		<div id="div_content">
-			<section id="sec_board">
+			<section class="hidden" id="sec_user">
+				<h2>User</h2>
+				<span id="span_user"></span>
+			</section>
+			<section class="hidden" id="sec_board">
 				<h2>Board</h2>
 				<span id="span_board"></span>
 			</section>
-			<section id="sec_list">
+			<section class="hidden" id="sec_list">
 				<h2>List</h2>
 				<span id="span_list"></span>
 			</section>
-			<section id="sec_bookmark">
+			<section class="hidden" id="sec_bookmark">
 				<h2>Bookmark</h2>
-				<a id="a_bookmark">Send to Trello</a>
+				<a class="trelloButton" id="a_bookmark">Send to Trello</a>
 			</section>
-			<section>
+			<section class="hidden" id="sec_directions">
 				<ul>
+					<li>Login or check for the correct user.</li>
 					<li>Choose a board.</li>
 					<li>Choose a list.</li>
 					<li>Drag the button to your bookmarks bar.</li>

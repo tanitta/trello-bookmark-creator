@@ -3,23 +3,42 @@ if(false)
 	Trello.deauthorize();
 
 //Indicates the URL to the trelloBookmark.js
-//var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
-var trelloBookmarkURL = "http://flipxfx.pancakeapps.com/trello-bookmark-creator/trelloBookmark.js";
+var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
+//var trelloBookmarkURL = "http://flipxfx.pancakeapps.com/trello-bookmark-creator/trelloBookmark.js";
+
+//Start of page
+function init() {
+	//Hide/show divs
+	$("#sec_board").fadeOut();
+	$("#sec_list").fadeOut();
+	$("#sec_bookmark").fadeOut();
+	$("#sec_user").fadeIn("slow");
+	$("#sec_directions").fadeIn("slow");
+
+	//Try to login automatically
+	checkAuth();
+}
 
 //Try to authorize without user
 function checkAuth() {
-	//Hide divs
-	$("#sec_board").hide();
-	$("#sec_list").hide();
-	$("#sec_bookmark").hide();
-
 	Trello.authorize({
 		interactive: false,
 		persist: true,
-		error: function() { auth(); },
+		error: function() { checkAuthFailed(); },
 		success: function() { setupBoards(); }
 	});
 };
+
+//If automatic auth fails then provide a button to login manually
+function checkAuthFailed() {
+    $("#span_user").html("<a href=\"javascript:auth();\" class=\"trelloButton\" id=\"a_login\">Login</a>");
+}
+
+//Logs out the user and reloads the page
+function deauth() {
+	Trello.deauthorize();
+	location.reload();
+}
 
 //If automatic authorize fails then authorize with user
 function auth() {
@@ -35,6 +54,10 @@ function auth() {
 
 //Setup the board selection list
 function setupBoards() {
+	Trello.members.get("me", function(member){
+        $("#span_user").html("<div style=\"padding: 10px 0 0 30px;\">" + member.fullName + "<a href=\"javascript:deauth();\" id=\"a_logout\">Logout</a></div>");
+	});
+
 	Trello.get("members/me", {
 		boards: "open"
 	}, function(data) {
@@ -85,4 +108,4 @@ function makeBookmark(listId) {
 	$("#sec_bookmark").fadeIn();
 };
 
-$(checkAuth);
+$(init);

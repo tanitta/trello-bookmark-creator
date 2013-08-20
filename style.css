@@ -7,12 +7,27 @@ body {
 	min-width: 480px;
 }
 
+a {
+	color: #939393;
+	display: inline-block;
+	font-size: 14px;
+	height: 18px;
+	line-height: 18px;
+	margin-right: 6px;
+	text-decoration: underline;
+	width: 78px;
+	padding: 0 10px 0 10px;
+}
+
+a:hover {
+	color: #111111;
+}
+
 #div_content {
 	display: block;
 	margin: 0 auto 0 auto;
 	min-width: 400px;
 	max-width: 600px;
-	zoom: 1;
 	overflow: auto;
 }
 
@@ -59,7 +74,6 @@ select {
 	border-style: solid;
 	border-width: 1px;
 	color: #454545;
-	cursor: pointer;
 	display: block;
 	font-size: 16px;
 	font-weight: bold;
@@ -67,7 +81,7 @@ select {
 	margin: 10px 0 0 30px;
 }
 
-#a_bookmark {
+.trelloButton {
 	background-attachment: scroll;
 	background-clip: border-box;
 	background-color: #000000;
@@ -77,7 +91,6 @@ select {
 	border-radius: 3px;
 	border-style: solid;
 	border-width: 1px;
-	cursor: pointer;
 	color: #454545;
 	display: block;
 	font-size: 16px;
@@ -91,13 +104,22 @@ select {
 	margin: 10px 0 0 30px;
 }
 
-#a_bookmark:hover {
+.trelloButton:hover {
 	color: #FFFFFF;
 	background-image: -webkit-linear-gradient(top, rgb(46, 133, 184) 0px, rgb(40, 115, 159) 100%);
-	cursor: pointer;
 }
 
 #img_loading {
 	float: right;
 	width: 35px;
+}
+
+#span_user {
+	font-size: 16px;
+	color: #454545;
+	margin: 0 0 0 30px;
+}
+
+.hidden {
+	display: none;
 }
