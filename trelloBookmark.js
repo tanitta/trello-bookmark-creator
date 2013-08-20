@@ -1,2 +1,2 @@
-var listId = window.location.href.split('?')[1];  
+var listId = window.location.href;  
 alert(listId);
