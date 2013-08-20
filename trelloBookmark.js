@@ -13,7 +13,7 @@ function trelloBookmark(listId) {
 		pageType = "sgCase";
 
 	var sgWorkRequestRegEx = new RegExp("^https://sgcorp.my.salesforce.com/a43");
-	if (sgWorkRequestRegEx.exec(document.demoMatch.subject.value) != null) 
+	if (sgWorkRequestRegEx.exec(document.URL) != null) 
 		alert("REGEX MATCH");
 
 	/*
