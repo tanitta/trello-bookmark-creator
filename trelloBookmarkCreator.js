@@ -81,7 +81,7 @@ function makeBookmark(listId) {
 	//Trello.token();
 	//Trello.key();
 	//$("#a_bookmark").attr("href", "javascript:" + "alert(\"" + listId + "\");");
-	$("#a_bookmark").attr("href", "javascript:document.body.appendChild(document.createElement(\"script\")).src=\"https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js?" + listId + "\";void(0)");
+	$("#a_bookmark").attr("href", "javascript:(function(){function b(){if(sendToTrello)sendToTrello(\"" + listId + "\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js\");document.body.appendChild(a);setTimeout(b,0)})()");
 	$("#sec_bookmark").fadeIn();
 };
 
