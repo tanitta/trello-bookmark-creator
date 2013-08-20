@@ -14,7 +14,7 @@ function init() {
 	$("#sec_bookmark").fadeOut();
 	$("#sec_user").fadeIn("slow");
 	$("#sec_directions").fadeIn("slow");
-
+    
 	//Try to login automatically
 	checkAuth();
 }
@@ -54,7 +54,7 @@ function auth() {
 
 //Setup the board selection list
 function setupBoards() {
-	Trello.members.get("me", function(member){
+	Trello.members.get("me", function(member) {
         $("#span_user").html("<div style=\"padding: 10px 0 0 30px;\">" + member.fullName + "<a href=\"javascript:deauth();\" id=\"a_logout\">Logout</a></div>");
 	});
 
@@ -76,6 +76,9 @@ function setupBoards() {
 					setupLists($("#select_board").val());
 			});
 		});
+	}, function(data) {
+		//If failed, then try a complete reset
+		deauth();
 	});
 };
 

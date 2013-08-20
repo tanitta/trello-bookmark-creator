@@ -34,9 +34,11 @@ function trelloBookmark(listId) {
 		if(jQuery) {
 			window.clearInterval(interval);
 
-			//For troubleshooting
-			if(false)
+			//Logs out the user and reloads the page
+			function deauth() {
 				Trello.deauthorize();
+				location.reload();
+			}
 			
 			//Try to authorize without user
 			function checkAuth() {
@@ -88,7 +90,13 @@ function trelloBookmark(listId) {
 						name: name,
 						desc: desc,
 						idList: listId
-					})
+					}, function(data) {
+						alert("Success");
+					}, function(data) {
+						alert("Error");
+						//If failed, then try a complete reset
+						deauth();
+					});
 				}
 			};
 			
