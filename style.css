@@ -84,7 +84,7 @@ select {
 .trelloButton {
 	background-attachment: scroll;
 	background-clip: border-box;
-	background-color: #000000;
+	background-color: rgb(243, 243, 243);
 	background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
 	background-origin: padding-box;
 	border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
@@ -106,6 +106,7 @@ select {
 
 .trelloButton:hover {
 	color: #FFFFFF;
+	background-color: rgb(40, 115, 159);
 	background-image: -webkit-linear-gradient(top, rgb(46, 133, 184) 0px, rgb(40, 115, 159) 100%);
 }
 
