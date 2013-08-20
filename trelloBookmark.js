@@ -13,10 +13,10 @@ function trelloBookmark(listId) {
 		pageType = "sgCase";
 
 	//If the user is not on a supported page then stop (if commented out then card name = page title and desc = page URL)
-	if (pageType == "") {
+	/*if (pageType == "") {
 		alert("Page not supported.");
 		return;
-	}
+	}*/
 
 	//Load jQuery and the Trello API
 	var head = document.getElementsByTagName("head")[0];
