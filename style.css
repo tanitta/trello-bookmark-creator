@@ -52,7 +52,6 @@ select {
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	background-attachment: scroll;
 	background-clip: border-box;
-	background-color: #000000;
 	background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
 	background-origin: padding-box;
 	border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
@@ -64,7 +63,7 @@ select {
 	display: block;
 	font-size: 16px;
 	font-weight: bold;
-	height: 25px;
+	height: 32px;
 	margin: 10px 0 0 30px;
 }
 

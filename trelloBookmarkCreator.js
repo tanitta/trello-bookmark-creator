@@ -1,10 +1,10 @@
-//For debuggging 
-if (false) {
+//For troubleshooting
+if(false)
 	Trello.deauthorize();
-}
 
 //Indicates the URL to the trelloBookmark.js
-var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
+//var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
+var trelloBookmarkURL = "http://flipxfx.pancakeapps.com/trello-bookmark-creator/trelloBookmark.js";
 
 //Try to authorize without user
 function checkAuth() {
@@ -25,9 +25,9 @@ function checkAuth() {
 function auth() {
 	Trello.authorize({
 		type: "popup",
-		name: "Send to Trello Bookmark Creator",
+		name: "Trello Bookmark Creator",
 		persist: true,
-		scope: { write: true },
+		scope: { write: true, read: true },
 		expiration: "never",
 		success: function() { setupBoards(); }
 	});
@@ -81,7 +81,7 @@ function setupLists(boardId) {
 
 //Create the bookmark according to the list currently selected
 function makeBookmark(listId) {
-	$("#a_bookmark").attr("href", "javascript:(function(){function b(){if(window.sendToTrello)sendToTrello(\"" + listId + "\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"" + trelloBookmarkURL + "\");document.body.appendChild(a);setTimeout(b,0)})()");
+	$("#a_bookmark").attr("href", "javascript:(function(){function b(){if(window.trelloBookmark)trelloBookmark(\"" + listId + "\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"" + trelloBookmarkURL + "\");document.body.appendChild(a);setTimeout(b,0)})()");
 	$("#sec_bookmark").fadeIn();
 };
 
