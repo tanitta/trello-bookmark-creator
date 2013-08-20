@@ -37,7 +37,6 @@ function trelloBookmark(listId) {
 			//Logs out the user and reloads the page
 			function deauth() {
 				Trello.deauthorize();
-				location.reload();
 			}
 			
 			//Try to authorize without user
@@ -91,10 +90,9 @@ function trelloBookmark(listId) {
 						desc: desc,
 						idList: listId
 					}, function(data) {
-						alert("Success");
 					}, function(data) {
-						alert("Error");
 						//If failed, then try a complete reset
+						alert("Error posting card, please refresh the page and try again.");
 						deauth();
 					});
 				}
