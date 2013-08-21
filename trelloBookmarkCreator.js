@@ -1,10 +1,5 @@
-//For troubleshooting
-if(false)
-	Trello.deauthorize();
-
 //Indicates the URL to the trelloBookmark.js
 var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
-//var trelloBookmarkURL = "http://flipxfx.pancakeapps.com/trello-bookmark-creator/trelloBookmark.js";
 
 //Start of page
 function init() {

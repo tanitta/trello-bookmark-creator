@@ -1,4 +1,6 @@
 function trelloBookmark(listId) {
+	var allowAllPages = true;
+
 	//Make sure the list id is valid
 	if (listId == null)
 		alert("No list id provided or error getting list id");
@@ -13,10 +15,12 @@ function trelloBookmark(listId) {
 		pageType = "sgCase";
 
 	//If the user is not on a supported page then stop (if commented out then card name = page title and desc = page URL)
-	/*if (pageType == "") {
-		alert("Page not supported.");
-		return;
-	}*/
+	if (allowAllPages) { 
+		if (pageType == "") {
+			alert("Page not supported.");
+			return;
+		}
+	}
 
 	//Load jQuery and the Trello API
 	var head = document.getElementsByTagName("head")[0];
