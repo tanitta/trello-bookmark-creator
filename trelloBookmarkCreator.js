@@ -14,6 +14,11 @@ function init() {
 	$("#sec_bookmark").fadeOut();
 	$("#sec_user").fadeIn("slow");
 	$("#sec_directions").fadeIn("slow");
+	
+	//Empty spans
+	$("#span_user").empty();
+	$("#span_board").empty();
+	$("#span_list").empty();
     
 	//Try to login automatically
 	checkAuth();
@@ -54,8 +59,13 @@ function auth() {
 
 //Setup the board selection list
 function setupBoards() {
+	//Empty spans
+	$("#span_user").empty();
+	$("#span_board").empty();
+	$("#span_list").empty();
+
 	Trello.members.get("me", function(member) {
-        $("#span_user").html("<div style=\"padding: 10px 0 0 30px;\">" + member.fullName + "<a href=\"javascript:deauth();\" id=\"a_logout\">Logout</a></div>");
+        $("#span_user").html("<div style=\"padding: 10px 0 0 30px;\">" + member.fullName + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ <a href=\"javascript:deauth();\" id=\"a_logout\">Logout</a> ]</div>");
 	});
 
 	Trello.get("members/me", {
@@ -63,9 +73,9 @@ function setupBoards() {
 	}, function(data) {
 		//Create the board select list and show it
 		$("#span_board").append("<select id=\"select_board\"></select>");
-		$("#select_board").append("<option value=\"--None--\">--None--</option>");
+		$("#select_board").append("<option value=\"--None--\">&nbsp;&nbsp;&nbsp;&nbsp;--None--&nbsp;&nbsp;&nbsp;&nbsp;</option>");
 		for (var i = 0; i < data.boards.length; i++)
-			$("#select_board").append("<option value=\"" + data.boards[i].id + "\">" + data.boards[i].name + "</option>");
+			$("#select_board").append("<option value=\"" + data.boards[i].id + "\">&nbsp;&nbsp;&nbsp;&nbsp;" + data.boards[i].name + "&nbsp;&nbsp;&nbsp;&nbsp;</option>");
 		$("#sec_board").fadeIn();
 		
 		//Setup the board onchange function to call the setup lists function if a board is selected
@@ -90,9 +100,9 @@ function setupLists(boardId) {
 		//Create the list select list and show it
 		$("#span_list").empty();
 		$("#span_list").append("<select id=\"select_list\"></select>");
-		$("#select_list").append("<option value=\"--None--\">--None--</option>");
+		$("#select_list").append("<option value=\"--None--\">&nbsp;&nbsp;&nbsp;&nbsp;--None--&nbsp;&nbsp;&nbsp;&nbsp;</option>");
 		for (var i = 0; i < data.lists.length; i++)
-			$("#select_list").append("<option value=\"" + data.lists[i].id + "\">" + data.lists[i].name + "</option>");
+			$("#select_list").append("<option value=\"" + data.lists[i].id + "\">&nbsp;&nbsp;&nbsp;&nbsp;" + data.lists[i].name + "&nbsp;&nbsp;&nbsp;&nbsp;</option>");
 		$("#sec_list").fadeIn();
 
 		//Setup the list onchange function to call the setup lists function if a board is selected
@@ -107,6 +117,7 @@ function setupLists(boardId) {
 
 //Create the bookmark according to the list currently selected
 function makeBookmark(listId) {
+	$("#a_bookmark").text("Send to Trello - " + $("#select_board :selected").text().trim() + " - " + $("#select_list :selected").text().trim());
 	$("#a_bookmark").attr("href", "javascript:(function(){function b(){if(window.trelloBookmark)trelloBookmark(\"" + listId + "\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"" + trelloBookmarkURL + "\");document.body.appendChild(a);setTimeout(b,0)})()");
 	$("#sec_bookmark").fadeIn();
 };

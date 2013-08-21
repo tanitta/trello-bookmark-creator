@@ -11,12 +11,7 @@ a {
 	color: #939393;
 	display: inline-block;
 	font-size: 14px;
-	height: 18px;
-	line-height: 18px;
-	margin-right: 6px;
 	text-decoration: underline;
-	width: 78px;
-	padding: 0 10px 0 10px;
 }
 
 a:hover {
@@ -28,7 +23,6 @@ a:hover {
 	margin: 0 auto 0 auto;
 	min-width: 400px;
 	max-width: 600px;
-	overflow: auto;
 }
 
 header {
@@ -63,7 +57,6 @@ h2 {
 }
 
 select {
-	margin: 10px 0 0 20px;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	background-attachment: scroll;
 	background-clip: border-box;
@@ -92,13 +85,12 @@ select {
 	border-style: solid;
 	border-width: 1px;
 	color: #454545;
-	display: block;
+	display: inline-block;
 	font-size: 16px;
 	font-weight: bold;
 	height: 20px;
 	line-height: 20px;
-	width: 130px;
-	padding: 6px 6px 6px 6px;
+	padding: 6px 30px 6px 30px;
 	text-align: center;
 	text-decoration: none;
 	margin: 10px 0 0 30px;
@@ -110,15 +102,9 @@ select {
 	background-image: -webkit-linear-gradient(top, rgb(46, 133, 184) 0px, rgb(40, 115, 159) 100%);
 }
 
-#img_loading {
-	float: right;
-	width: 35px;
-}
-
 #span_user {
 	font-size: 16px;
 	color: #454545;
-	margin: 0 0 0 30px;
 }
 
 .hidden {
