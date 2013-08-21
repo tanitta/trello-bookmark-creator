@@ -1,5 +1,5 @@
 # Trello Bookmark Creator
-The Trello Bookmark Creator is used to create a bookmark to add a website to a Trello list as a card. 
+The Trello Bookmark Creator is used to create a bookmark to add a webpage to a Trello list as a card. 
 
 ### Using the Creator
 Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookmark-creator/index.html). The bookmark creator should work in any browser, but the bookmark itself may not work in IE.
