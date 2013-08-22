@@ -107,6 +107,14 @@ select {
 	color: #454545;
 }
 
+#sec_about {
+	float: right; 
+	text-align: center; 
+	font-size: 70%; 
+	font-style: italic; 
+	padding: 20px 0 0 0;
+}
+
 .hidden {
 	display: none;
 }

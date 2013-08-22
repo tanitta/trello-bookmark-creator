@@ -1,5 +1,5 @@
 # Trello Bookmark Creator
-The Trello Bookmark Creator is used to create a bookmark to add a webpage to a Trello list as a card. 
+The Trello Bookmark Creator is used to create a bookmark to add a webpage to a Trello list as a card.
 
 ### Using the Creator
 Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookmark-creator/index.html). The bookmark creator should work in any browser, but the bookmark itself may not work in IE.
@@ -30,3 +30,5 @@ Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookma
 - Currently trelloBookmark.js supports some webpages specifically by using known fields on the page to populate the card instead of using the page title and url for the card title and description.
 - You can change trelloBookmark.js to run specifically for you own pages by changing how `pageType` is populated and the `switch (pageType)`.
 - In trelloBookmark.js you can change `allowAllPages` to allow\disallow the bookmark to accept page not specifically supported.
+<br><br><br>
+<div style="text-align: center; font-size: 70%;">*( not affiliated or in any way officially connected with Trello/Fog Creek Software )*</div>

@@ -9,6 +9,7 @@ function init() {
 	$("#sec_bookmark").fadeOut();
 	$("#sec_user").fadeIn("slow");
 	$("#sec_directions").fadeIn("slow");
+	$("#sec_about").fadeIn("slow");
 	
 	//Empty spans
 	$("#span_user").empty();
