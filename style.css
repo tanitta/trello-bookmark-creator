@@ -31,8 +31,8 @@ header {
 	font-weight: bold;
 	text-align: center;
 	background: #27709b;
-	background: -webkit-linear-gradient(top, #27709b 0, #24688f 100%);
-	background: linear-gradient(to bottom, #27709b 0, #24688f 100%);
+	background: -webkit-linear-gradient(top, #27709B 0, #24688F 100%);
+	background: linear-gradient(to bottom, #27709B 0, #24688F 100%);
 	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.1);
 	padding: 5px;
@@ -60,7 +60,7 @@ select {
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	background-attachment: scroll;
 	background-clip: border-box;
-	background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0px, #F3F3F3 100%);
 	background-origin: padding-box;
 	border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
 	border-radius: 3px;
@@ -78,7 +78,7 @@ select {
 	background-attachment: scroll;
 	background-clip: border-box;
 	background-color: rgb(243, 243, 243);
-	background-image: -webkit-linear-gradient(top, rgb(255, 255, 255) 0px, rgb(243, 243, 243) 100%);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0px, #F3F3F3 100%);
 	background-origin: padding-box;
 	border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
 	border-radius: 3px;
@@ -99,7 +99,7 @@ select {
 .trelloButton:hover {
 	color: #FFFFFF;
 	background-color: rgb(40, 115, 159);
-	background-image: -webkit-linear-gradient(top, rgb(46, 133, 184) 0px, rgb(40, 115, 159) 100%);
+	background-image: -webkit-linear-gradient(top, #2E85B8 0px, #28739F 100%);
 }
 
 #span_user {
@@ -109,10 +109,9 @@ select {
 
 #sec_about {
 	float: right; 
-	text-align: center; 
-	font-size: 70%; 
 	font-style: italic; 
 	padding: 20px 0 0 0;
+	border-bottom-width: 0px;
 }
 
 .hidden {

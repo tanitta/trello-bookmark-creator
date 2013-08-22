@@ -19,7 +19,7 @@ Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookma
 
 ### Description of Source Files
 - index.html - bookmark creator html
-- style.css - bookmark creator html
+- style.css - bookmark creator css
 - trelloBookmarkCreator.js - javascript used by the bookmark creator
 - trelloBookmark.js - javscript that is run by the bookmark created by the bookmark creator
 - readme.md - describes what the Trello Bookmark Creator is and how to use it :P
@@ -31,5 +31,5 @@ Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookma
 - You can change trelloBookmark.js to run specifically for you own webpages by changing how `populateCard()` identifies webpages and populates the name and description of the card.
 - In trelloBookmark.js you can change `allowAllPages` to allow\disallow the bookmark to accept page not specifically supported.
 
-<br>
-*( not affiliated or in any way officially connected with Trello/Fog Creek Software )*
+### Disclaimer
+Trello is a registered trademark of Fog Creek Software, Inc. This service is not affiliated with Fog Creek Software, Inc.

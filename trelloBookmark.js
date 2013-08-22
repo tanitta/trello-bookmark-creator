@@ -80,7 +80,7 @@ function trelloBookmark(listId) {
 				});
 			}
 						
-			//Logs out the user and reloads the page
+			//Logs out the user
 			function deauth() {
 				Trello.deauthorize();
 			}
