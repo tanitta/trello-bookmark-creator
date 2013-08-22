@@ -1,26 +1,14 @@
 function trelloBookmark(listId) {
+	//Indicates if bookmark should allow websites not specifically supported
 	var allowAllPages = true;
+	
+	//The name and description of the card
+	var name = "";
+	var desc = "";
 
 	//Make sure the list id is valid
 	if (listId == null)
 		alert("No list id provided or error getting list id");
-
-	//Determine what page the user is on
-	var pageType = "";
-	if (document.getElementById("00N400000023eDQ_ileinner") != null)
-		pageType = "sgWorkRequest";
-	if (document.getElementById("00N400000024KiK_ileinner") != null)
-		pageType = "sgProject";
-	else if (document.getElementById("cas2j_id0_j_id4_ileinner") != null)
-		pageType = "sgCase";
-
-	//If the user is not on a supported page then stop (if commented out then card name = page title and desc = page URL)
-	if (allowAllPages) { 
-		if (pageType == "") {
-			alert("Page not supported.");
-			return;
-		}
-	}
 
 	//Load jQuery and the Trello API
 	var head = document.getElementsByTagName("head")[0];
@@ -37,10 +25,37 @@ function trelloBookmark(listId) {
 	var interval = self.setInterval(function(){
 		if(jQuery) {
 			window.clearInterval(interval);
-
-			//Logs out the user and reloads the page
-			function deauth() {
-				Trello.deauthorize();
+			
+			//Determines the name and description of the card then calls checkAuth
+			function populateCard() {
+				//SG Work Request
+				if (document.getElementById("00N400000023eDQ_ileinner") != null) {
+					name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
+					desc = document.URL.substring(0, 48);
+				}
+				//SG PPM Project
+				if (document.getElementById("00N400000024KiK_ileinner") != null) {
+					name = $("#00N400000024KiK_ileinner").text() + " - " + $("#Name_ileinner").text();
+					desc = document.URL.substring(0, 48);
+				}
+				//SG Case
+				else if (document.getElementById("cas2j_id0_j_id4_ileinner") != null) {
+					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
+					desc = document.URL.substring(0, 92);
+				}
+				//User is not on a specifically supported page
+				else {
+					if (allowAllPages) { 
+						name = document.title;
+						desc = document.URL;
+					}
+					else {
+						alert("Page not supported.");
+						return;
+					}
+				}
+				
+				checkAuth();
 			}
 			
 			//Try to authorize without user
@@ -51,7 +66,7 @@ function trelloBookmark(listId) {
 					error: function() { auth(); },
 					success: function() { sendToTrello(); }
 				});
-			};
+			}
 
 			//If automatic authorize fails then authorize with user
 			function auth() {
@@ -63,31 +78,17 @@ function trelloBookmark(listId) {
 					expiration: "never",
 					success: function() { sendToTrello(); }
 				});
-			};
+			}
+						
+			//Logs out the user and reloads the page
+			function deauth() {
+				Trello.deauthorize();
+			}
 
 			//Once the user is logged in this function is fired
 			function sendToTrello() {
 				//Confirm the submission
 				if (window.confirm("Are you sure?")) {
-					//Get the card title and description according to the pageType
-					switch (pageType) {
-						case "sgWorkRequest":
-							name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
-							desc = document.URL.substring(0, 48);
-							break;
-						case "sgProject":
-							name = $("#00N400000024KiK_ileinner").text() + " - " + $("#Name_ileinner").text();
-							desc = document.URL.substring(0, 48);
-							break;
-						case "sgCase":
-							name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
-							desc = document.URL.substring(0, 92);
-							break;
-						default:
-							name = document.title;
-							desc = document.URL;
-					}
-					
 					//Post the card to Trello
 					Trello.post("cards", {
 						name: name,
@@ -100,9 +101,9 @@ function trelloBookmark(listId) {
 						deauth();
 					});
 				}
-			};
+			}
 			
-			$(checkAuth);
+			$(populateCard);
 		}
 	}, 300);
 }

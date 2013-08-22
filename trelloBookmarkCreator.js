@@ -28,17 +28,11 @@ function checkAuth() {
 		error: function() { checkAuthFailed(); },
 		success: function() { setupBoards(); }
 	});
-};
+}
 
 //If automatic auth fails then provide a button to login manually
 function checkAuthFailed() {
     $("#span_user").html("<a href=\"javascript:auth();\" class=\"trelloButton\" id=\"a_login\">Login</a>");
-}
-
-//Logs out the user and reloads the page
-function deauth() {
-	Trello.deauthorize();
-	location.reload();
 }
 
 //If automatic authorize fails then authorize with user
@@ -51,7 +45,13 @@ function auth() {
 		expiration: "never",
 		success: function() { setupBoards(); }
 	});
-};
+}
+
+//Logs out the user and reloads the page
+function deauth() {
+	Trello.deauthorize();
+	location.reload();
+}
 
 //Setup the board selection list
 function setupBoards() {
@@ -86,7 +86,7 @@ function setupBoards() {
 		//If failed, then try a complete reset
 		deauth();
 	});
-};
+}
 
 //Setup the list selection list
 function setupLists(boardId) {
@@ -109,13 +109,13 @@ function setupLists(boardId) {
 			});
 		});
 	});
-};
+}
 
 //Create the bookmark according to the list currently selected
 function makeBookmark(listId) {
 	$("#a_bookmark").text("Send to Trello - " + $("#select_board :selected").text().trim() + " - " + $("#select_list :selected").text().trim());
 	$("#a_bookmark").attr("href", "javascript:(function(){function b(){if(window.trelloBookmark)trelloBookmark(\"" + listId + "\");else setTimeout(b,0)}var a=document.createElement(\"script\");a.setAttribute(\"type\",\"text/javascript\");a.setAttribute(\"charset\",\"UTF-8\");a.setAttribute(\"src\",\"" + trelloBookmarkURL + "\");document.body.appendChild(a);setTimeout(b,0)})()");
 	$("#sec_bookmark").fadeIn();
-};
+}
 
 $(init);
