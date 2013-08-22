@@ -30,5 +30,6 @@ Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookma
 - Currently trelloBookmark.js supports some webpages specifically by using known fields on the page to populate the card instead of using the page title and url for the card title and description.
 - You can change trelloBookmark.js to run specifically for you own webpages by changing how `populateCard()` identifies webpages and populates the name and description of the card.
 - In trelloBookmark.js you can change `allowAllPages` to allow\disallow the bookmark to accept page not specifically supported.
-<br><br><br>
+
+<br>
 *( not affiliated or in any way officially connected with Trello/Fog Creek Software )*
