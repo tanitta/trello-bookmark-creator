@@ -29,7 +29,7 @@ Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookma
 - To deploy your own creator you will need to change `trelloBookmarkURL` in trelloBookmarkCreator.js to point to your own trelloBookmark.js.
 - Currently trelloBookmark.js supports some webpages specifically by using known fields on the page to populate the card instead of using the page title and url for the card title and description.
 - You can change trelloBookmark.js to run specifically for you own webpages by changing how `populateCard()` identifies webpages and populates the name and description of the card.
-- In trelloBookmark.js you can change `allowAllPages` to allow\disallow the bookmark to accept page not specifically supported.
+- In trelloBookmark.js you can change `allowAllPages` to allow\disallow the bookmark to accept webpages not specifically supported.
 
 ### Disclaimer
 Trello is a registered trademark of Fog Creek Software, Inc. This service is not affiliated with Fog Creek Software, Inc.
