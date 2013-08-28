@@ -34,7 +34,7 @@ function trelloBookmark(listId) {
 					desc = document.URL.substring(0, 48);
 				}
 				//SG PPM Project
-				if ($("#00N400000024KiK_ileinner") != null) {
+				else if ($("#00N400000024KiK_ileinner") != null) {
 					name = $("#00N400000024KiK_ileinner").text() + " - " + $("#Name_ileinner").text();
 					desc = document.URL.substring(0, 48);
 				}
