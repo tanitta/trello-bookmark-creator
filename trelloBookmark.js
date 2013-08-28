@@ -29,17 +29,17 @@ function trelloBookmark(listId) {
 			//Determines the name and description of the card then calls checkAuth
 			function populateCard() {
 				//SG Work Request
-				if (document.getElementById("00N400000023eDQ_ileinner") != null) {
+				if ($("#00N400000023eDQ_ileinner") != null) {
 					name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
 					desc = document.URL.substring(0, 48);
 				}
 				//SG PPM Project
-				if (document.getElementById("00N400000024KiK_ileinner") != null) {
+				if ($("#00N400000024KiK_ileinner") != null) {
 					name = $("#00N400000024KiK_ileinner").text() + " - " + $("#Name_ileinner").text();
 					desc = document.URL.substring(0, 48);
 				}
 				//SG Case
-				else if (document.getElementById("cas2j_id0_j_id4_ileinner") != null) {
+				else if ($("#cas2j_id0_j_id4_ileinner") != null) {
 					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
 					desc = document.URL.substring(0, 92);
 				}
