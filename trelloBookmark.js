@@ -29,6 +29,7 @@ function trelloBookmark(listId) {
 			//Determines the name and description of the card then calls checkAuth
 			function populateCard() {
 				//SG Work Request
+				alert($("#00N400000023eDQ_ileinner").text());
 				if ($("#00N400000023eDQ_ileinner") != null && $("#00N400000023eDQ_ileinner").text() != "") {
 					name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
 					desc = document.URL.substring(0, 48);
