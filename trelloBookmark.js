@@ -40,7 +40,7 @@ function trelloBookmark(listId) {
 				}
 				//SG Case
 				else if ($(".cas14j_id0_j_id4_ileinner") != null && $("#cas14j_id0_j_id4_ileinner").text().trim() != "") {
-					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
+					name = "CASE-" + $(".pageDescription").text().trim() + " - " + $("#cas14j_id0_j_id4_ileinner").text();
 					desc = document.URL.substring(0, 92);
 				}
 				//User is not on a specifically supported page
