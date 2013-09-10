@@ -39,7 +39,7 @@ function trelloBookmark(listId) {
 					desc = document.URL.substring(0, 48);
 				}
 				//SG Case
-				else if ($("#cas2j_id0_j_id4_ileinner") != null && $("#cas2j_id0_j_id4_ileinner").text().trim() != "") {
+				else if ($(".cas14j_id0_j_id4_ileinner") != null && $("#cas14j_id0_j_id4_ileinner").text().trim() != "") {
 					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
 					desc = document.URL.substring(0, 92);
 				}
