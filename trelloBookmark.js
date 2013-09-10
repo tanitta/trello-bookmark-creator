@@ -30,17 +30,17 @@ function trelloBookmark(listId) {
 			function populateCard() {
 				//SG Work Request
 				if ($("#00N400000023eDQ_ileinner") != null) {
-					name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
+					name = $("#Name_ileinner").text() + " - A" + $("#00N400000023eDQ_ileinner").text();
 					desc = document.URL.substring(0, 48);
 				}
 				//SG PPM Project
 				else if ($("#00N400000024KiK_ileinner") != null) {
-					name = $("#00N400000024KiK_ileinner").text() + " - " + $("#Name_ileinner").text();
+					name = $("#00N400000024KiK_ileinner").text() + " - B" + $("#Name_ileinner").text();
 					desc = document.URL.substring(0, 48);
 				}
 				//SG Case
 				else if ($("#cas2j_id0_j_id4_ileinner") != null) {
-					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - " + $("#cas14j_id0_j_id4_ileinner").text();
+					name = "CASE-" + $("#cas2j_id0_j_id4_ileinner").text().substring(0, 8) + " - C" + $("#cas14j_id0_j_id4_ileinner").text();
 					desc = document.URL.substring(0, 92);
 				}
 				//User is not on a specifically supported page
