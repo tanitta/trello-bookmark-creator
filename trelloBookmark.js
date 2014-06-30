@@ -14,7 +14,7 @@ function trelloBookmark(listId) {
   var head = document.getElementsByTagName("head")[0];
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js";
+  script.src = "http://code.jquery.com/jquery-1.7.1.min.js";
   head.appendChild(script);
   var script2 = document.createElement("script");
   script2.type = "text/javascript";
@@ -23,7 +23,7 @@ function trelloBookmark(listId) {
 
   //Wait to continue until jQuery is loaded
   var interval = self.setInterval(function(){
-    if(jQuery) {
+    if(jQuery && Trello) {
       window.clearInterval(interval);
 
       //Determines the name and description of the card then calls checkAuth
@@ -39,7 +39,7 @@ function trelloBookmark(listId) {
           desc = document.URL.substring(0, 48);
         }
         //SG Case
-        else if ($(".cas14j_id0_j_id4_ileinner") != null && $("#cas14j_id0_j_id4_ileinner").text().trim() != "") {
+        else if ($(".cas14j_id0_j_id4_ileinner") != null && $(".cas14j_id0_j_id4_ileinner").text().trim() != "") {
           name = "CASE-" + $(".pageDescription").text().trim() + " - " + $("#cas14j_id0_j_id4_ileinner").text();
           desc = document.URL.substring(0, 92);
         }
