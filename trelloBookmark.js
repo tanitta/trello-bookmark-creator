@@ -20,17 +20,17 @@ function trelloBookmark(listId) {
   //Determines the name and description of the card then calls checkAuth
   function populateCard() {
     //SG Work Request
-    if (document.getElementById("00N400000023eDQ_ileinner") != null && document.getElementById("00N400000023eDQ_ileinner").text().trim() != "") {
+    if (document.getElementById("00N400000023eDQ_ileinner") != null && document.getElementById("00N400000023eDQ_ileinner").innerText.trim() != "") {
       name = document.getElementById("Name_ileinner").innerText + " - " + document.getElementById("00N400000023eDQ_ileinner").innerText;
       desc = document.URL.substring(0, 48);
     }
     //SG PPM Project
-    else if (document.getElementById("00N400000024KiK_ileinner") != null && document.getElementById("00N400000024KiK_ileinner").text().trim() != "") {
+    else if (document.getElementById("00N400000024KiK_ileinner") != null && document.getElementById("00N400000024KiK_ileinner").innerText.trim() != "") {
       name = document.getElementById("00N400000024KiK_ileinner").innerText + " - " + document.getElementById("Name_ileinner").innerText;
       desc = document.URL.substring(0, 48);
     }
     //SG Case
-    else if (document.getElementById("cas14j_id0_j_id4_ileinner") != null && document.getElementById("cas14j_id0_j_id4_ileinner").text().trim() != "") {
+    else if (document.getElementById("cas14j_id0_j_id4_ileinner") != null && document.getElementById("cas14j_id0_j_id4_ileinner").innerText.trim() != "") {
       name = "CASE-" + document.getElementsByClassName("pageDescription")[0].innerText.trim() + " - " + document.getElementById("cas14j_id0_j_id4_ileinner").innerText;
       desc = document.URL.substring(0, 92);
     }
