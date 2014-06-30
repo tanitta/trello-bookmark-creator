@@ -14,7 +14,7 @@ function trelloBookmark(listId) {
   var head = document.getElementsByTagName("head")[0];
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://code.jquery.com/jquery-1.7.1.min.js";
+  script.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
   head.appendChild(script);
   var script2 = document.createElement("script");
   script2.type = "text/javascript";
