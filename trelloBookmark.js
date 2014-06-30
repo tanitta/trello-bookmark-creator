@@ -23,16 +23,15 @@ function trelloBookmark(listId) {
   script2.src = "https://api.trello.com/1/client.js?key=a06d07618dfbbdb4c0e94b45041c26f3";
   head.appendChild(script2);
 
-  alert("OUTSIDE");
   //Wait to continue until jQuery is loaded
   var interval = self.setInterval(function(){
     if(jQuery != null && Trello != null) {
       window.clearInterval(interval);
 
-      alert("INSIDE");
-
       //Determines the name and description of the card then calls checkAuth
       function populateCard() {
+        alert("INSIDE populateCard");
+
         //SG Work Request
         if ($("#00N400000023eDQ_ileinner") != null && $("#00N400000023eDQ_ileinner").text().trim() != "") {
           name = $("#Name_ileinner").text() + " - " + $("#00N400000023eDQ_ileinner").text();
@@ -65,6 +64,7 @@ function trelloBookmark(listId) {
 
       //Try to authorize without user
       function checkAuth() {
+        alert("INSIDE checkAuth");
         Trello.authorize({
           interactive: false,
           persist: true,
@@ -75,6 +75,7 @@ function trelloBookmark(listId) {
 
       //If automatic authorize fails then authorize with user
       function auth() {
+        alert("INSIDE auth");
         Trello.authorize({
           type: "popup",
           name: "Trello Bookmark",
