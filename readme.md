@@ -4,9 +4,9 @@ The Trello Bookmark Creator is used to create a bookmarklet to add a webpage to 
 ### Using the Creator
 Working example can be found [here](http://flipxfx.pancakeapps.com/trello-bookmark-creator/index.html). The bookmark creator should work in any browser, but the bookmark itself may not work in IE.
 
-1. Login or check for the correct user. 
+1. Login or check for the correct user.
   - You will need to enable popups to grant the app access from Trello.
-2. Choose a board. 
+2. Choose a board.
   - This is the board that the card will be sent to by the bookmark.
 3. Choose a list.
   - This is the list that the card will be sent to by the bookmark.

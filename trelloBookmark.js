@@ -45,7 +45,7 @@ function trelloBookmark(listId) {
         }
         //User is not on a specifically supported page
         else {
-          if (allowAllPages) { 
+          if (allowAllPages) {
             name = document.title;
             desc = document.URL;
           }

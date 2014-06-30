@@ -62,7 +62,7 @@ select {
   background-clip: border-box;
   background-image: -webkit-linear-gradient(top, #FFFFFF 0px, #F3F3F3 100%);
   background-origin: padding-box;
-  border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
+  border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF;
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;
@@ -80,7 +80,7 @@ select {
   background-color: rgb(243, 243, 243);
   background-image: -webkit-linear-gradient(top, #FFFFFF 0px, #F3F3F3 100%);
   background-origin: padding-box;
-  border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF; 
+  border-color: #CFCFCF #CFCFCF #A1A1A1 #CFCFCF;
   border-radius: 3px;
   border-style: solid;
   border-width: 1px;
@@ -108,8 +108,8 @@ select {
 }
 
 #sec_about {
-  float: right; 
-  font-style: italic; 
+  float: right;
+  font-style: italic;
   padding: 20px 0 0 0;
   border-bottom-width: 0px;
 }

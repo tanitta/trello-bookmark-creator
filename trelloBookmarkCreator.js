@@ -77,8 +77,8 @@ function setupBoards() {
     //Setup the board onchange function to call the setup lists function if a board is selected
     $("#select_board").change(function () {
       $("#sec_bookmark").fadeOut();
-      $("#sec_list").fadeOut(function() { 
-        if ($("#select_board").val() != "--None--") 
+      $("#sec_list").fadeOut(function() {
+        if ($("#select_board").val() != "--None--")
           setupLists($("#select_board").val());
       });
     });
@@ -103,7 +103,7 @@ function setupLists(boardId) {
 
     //Setup the list onchange function to call the setup lists function if a board is selected
     $("#select_list").change(function () {
-      $("#sec_bookmark").fadeOut(function() { 
+      $("#sec_bookmark").fadeOut(function() {
         if ($("#select_list").val() != "--None--")
           makeBookmark($("#select_list").val());
       });
