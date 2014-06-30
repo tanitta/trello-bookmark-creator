@@ -23,10 +23,13 @@ function trelloBookmark(listId) {
   script2.src = "https://api.trello.com/1/client.js?key=a06d07618dfbbdb4c0e94b45041c26f3";
   head.appendChild(script2);
 
+  alert("OUTSIDE");
   //Wait to continue until jQuery is loaded
   var interval = self.setInterval(function(){
-    if(jQuery && Trello) {
+    if(jQuery != null && Trello != null) {
       window.clearInterval(interval);
+
+      alert("INSIDE");
 
       //Determines the name and description of the card then calls checkAuth
       function populateCard() {
