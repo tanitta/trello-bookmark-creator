@@ -11,6 +11,8 @@ function trelloBookmark(listId) {
     alert("No list id provided or error getting list id");
 
   //Load jQuery and the Trello API
+  jQuery = null;
+  Trello = null;
   var head = document.getElementsByTagName("head")[0];
   var script = document.createElement("script");
   script.type = "text/javascript";
