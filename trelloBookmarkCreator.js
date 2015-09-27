@@ -1,5 +1,5 @@
 //Indicates the URL to the trelloBookmark.js
-var trelloBookmarkURL = "https://raw.github.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
+var trelloBookmarkURL = "https://cdn.rawgit.com/flipxfx/trello-bookmark-creator/master/trelloBookmark.js";
 
 //Start of page
 function init() {
